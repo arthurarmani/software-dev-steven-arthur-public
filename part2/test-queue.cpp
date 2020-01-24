@@ -14,8 +14,8 @@ void t_false(bool p) { if(p) FAIL(); }
 void test_size_empty() {
   Queue * q = new Queue();
   t_true(q->size() == 0);
-  OK("1");
   delete q;
+  OK("1");
 }
 
 // Size when not empty AND Size modified when pushed.
@@ -24,9 +24,9 @@ void test_not_empty_push() {
   String * s = new String("HELLO");
   q->push(s);
   t_true(q->size() == 1);
-  OK("1");
   delete s;
   delete q;
+  OK("2");
 }
 
 // Size modified when popped.
@@ -44,7 +44,7 @@ void test_size_pop() {
   delete s;
   delete s2;
   delete q;
-  OK("1");
+  OK("3");
 }
 
 // Size remains when peeked.
@@ -62,7 +62,7 @@ void test_size_peek() {
   delete s;
   delete s2;
   delete q;
-  OK("1");
+  OK("4");
 }
 
 // Size remains when pushed and popped.
@@ -75,7 +75,7 @@ void test_size_push_pop() {
   t_true(q->size() == 0);
   delete s;
   delete q;
-  OK("1");
+  OK("5");
 }
 
 // Pop returns correct element.
@@ -85,12 +85,14 @@ void test_pop_element() {
   String * s2 = new String("GOODBYE");
   q->push(s);
   q->push(s2);
-  t_true((q->pop())->equals(s));
-  t_true((q->pop())->equals(s2));
+  String * s3 = dynamic_cast<String*>(q->pop());
+  String * s4 = dynamic_cast<String*>(q->pop());
+  t_true(s3->equals(s));
+  t_true(s4->equals(s2));
   delete s;
   delete s2;
   delete q;
-  OK("1");
+  OK("6");
 }
 
 // Peek returns correct element AND Peek doesn't remove element.
@@ -100,12 +102,14 @@ void test_peek_element() {
   String * s2 = new String("GOODBYE");
   q->push(s);
   q->push(s2);
-  t_true((q->peek())->equals(s));
-  t_true((q->peek())->equals(s));
+  String * s3 = dynamic_cast<String*>(q->peek());
+  String * s4 = dynamic_cast<String*>(q->peek());
+  t_true(s3->equals(s));
+  t_true(s4->equals(s));
   delete s;
   delete s2;
   delete q;
-  OK("1");
+  OK("7");
 }
 
 // isEmpty returns true when elements are not there.
@@ -113,7 +117,7 @@ void test_isEmpty_true() {
   Queue * q = new Queue();
   t_true(q->isEmpty());
   delete q;
-  OK("1");
+  OK("8");
 }
 
 // isEmpty returns false when elements are there.
@@ -129,7 +133,7 @@ void test_isEmpty_false() {
   delete s;
   delete s2;
   delete q;
-  OK("1");
+  OK("9");
 }
 
 /**
