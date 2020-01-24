@@ -3,6 +3,7 @@ We chose to implement a Queue for this part.
 First, we created two header files for Object and String.
 
 Objects have
+
   the following methods:
     size_t hash();
     virtual size_t hash_me_();
@@ -14,6 +15,7 @@ Objects have
 Objects are generic data types that have hashing and equality.
 
 Strings have
+
   the following methods:
     size_t hash_me_();
     bool equals(Object * other);
