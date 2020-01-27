@@ -1,4 +1,4 @@
-// Lang: C++
+// Lang::cpp
 
 #include "object.h"
 #include "string.h"
@@ -39,7 +39,7 @@ void test_size_pop() {
   t_true(q->size() == 1);
   q->push(s2);
   t_true(q->size() == 2);
-  q->pop();
+  delete(q->pop());
   t_true(q->size() == 1);
   delete s;
   delete s2;
@@ -71,7 +71,7 @@ void test_size_push_pop() {
   String * s = new String("HELLO");
   t_true(q->size() == 0);
   q->push(s);
-  q->pop();
+  delete(q->pop());
   t_true(q->size() == 0);
   delete s;
   delete q;
@@ -91,6 +91,8 @@ void test_pop_element() {
   t_true(s4->equals(s2));
   delete s;
   delete s2;
+  delete s3;
+  delete s4;
   delete q;
   OK("6");
 }
@@ -128,7 +130,7 @@ void test_isEmpty_false() {
   q->push(s);
   q->push(s2);
   t_false(q->isEmpty());
-  q->pop();
+  delete(q->pop());
   t_false(q->isEmpty());
   delete s;
   delete s2;
