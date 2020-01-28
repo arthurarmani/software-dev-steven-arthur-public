@@ -13,9 +13,6 @@
 class Queue {
 public:
 
-  size_t size_; // number of elements in Queue
-  Object ** arr_; // the elements stored in Queue
-
   // Constructor for the queue.
   Queue();
 
