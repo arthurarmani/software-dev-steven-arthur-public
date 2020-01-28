@@ -12,9 +12,6 @@
 class String : public Object {
 public:
 
-  char* val_; // The value of the string as a character array.
-  size_t size_; // The length of the string.
-
   // Constructs a string from a char*.
   // @param c: pointer to an array of char
   String(char* c);
