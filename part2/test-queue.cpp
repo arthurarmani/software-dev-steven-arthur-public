@@ -12,7 +12,7 @@ void t_false(bool p) { if(p) FAIL(); }
 
 // Size when empty.
 void test_size_empty() {
-  Queue * q = new Queue();
+  StringQueue * q = new StringQueue();
   t_true(q->size() == 0);
   delete q;
   OK("1");
@@ -20,7 +20,7 @@ void test_size_empty() {
 
 // Size when not empty AND Size modified when pushed.
 void test_not_empty_push() {
-  Queue * q = new Queue();
+  StringQueue * q = new StringQueue();
   String * s = new String("HELLO");
   q->push(s);
   t_true(q->size() == 1);
@@ -31,7 +31,7 @@ void test_not_empty_push() {
 
 // Size modified when popped.
 void test_size_pop() {
-  Queue * q = new Queue();
+  StringQueue * q = new StringQueue();
   String * s = new String("HELLO");
   String * s2 = new String("GOODBYE");
   t_true(q->size() == 0);
@@ -49,8 +49,8 @@ void test_size_pop() {
 
 // Size remains when peeked.
 void test_size_peek() {
-  Queue * q = new Queue();
-  String * s = new String("HELLO");
+  StringQueue * q = new StringQueue();
+  String * o = new String("HELLO");
   String * s2 = new String("GOODBYE");
   t_true(q->size() == 0);
   q->push(s);
@@ -67,7 +67,7 @@ void test_size_peek() {
 
 // Size remains when pushed and popped.
 void test_size_push_pop() {
-  Queue * q = new Queue();
+  StringQueue * q = new StringQueue();
   String * s = new String("HELLO");
   t_true(q->size() == 0);
   q->push(s);
@@ -80,13 +80,13 @@ void test_size_push_pop() {
 
 // Pop returns correct element.
 void test_pop_element() {
-  Queue * q = new Queue();
+  StringQueue * q = new StringQueue();
   String * s = new String("HELLO");
   String * s2 = new String("GOODBYE");
   q->push(s);
   q->push(s2);
-  String * s3 = dynamic_cast<String*>(q->pop());
-  String * s4 = dynamic_cast<String*>(q->pop());
+  String * s3 = q->pop();
+  String * s4 = q->pop();
   t_true(s3->equals(s));
   t_true(s4->equals(s2));
   delete s;
@@ -99,13 +99,13 @@ void test_pop_element() {
 
 // Peek returns correct element AND Peek doesn't remove element.
 void test_peek_element() {
-  Queue * q = new Queue();
+  StringQueue * q = new StringQueue();
   String * s = new String("HELLO");
   String * s2 = new String("GOODBYE");
   q->push(s);
   q->push(s2);
-  String * s3 = dynamic_cast<String*>(q->peek());
-  String * s4 = dynamic_cast<String*>(q->peek());
+  String * s3 = q->peek();
+  String * s4 = q->peek();
   t_true(s3->equals(s));
   t_true(s4->equals(s));
   delete s;
@@ -116,7 +116,7 @@ void test_peek_element() {
 
 // isEmpty returns true when elements are not there.
 void test_isEmpty_true() {
-  Queue * q = new Queue();
+  StringQueue * q = new StringQueue();
   t_true(q->isEmpty());
   delete q;
   OK("8");
@@ -124,7 +124,7 @@ void test_isEmpty_true() {
 
 // isEmpty returns false when elements are there.
 void test_isEmpty_false() {
-  Queue * q = new Queue();
+  StringQueue * q = new StringQueue();
   String * s = new String("HELLO");
   String * s2 = new String("GOODBYE");
   q->push(s);
