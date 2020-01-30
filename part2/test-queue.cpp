@@ -41,7 +41,6 @@ void test_size_pop() {
   t_true(q->size() == 2);
   delete(q->pop());
   t_true(q->size() == 1);
-  delete s;
   delete s2;
   delete q;
   OK("3");
@@ -50,7 +49,7 @@ void test_size_pop() {
 // Size remains when peeked.
 void test_size_peek() {
   StringQueue * q = new StringQueue();
-  String * o = new String("HELLO");
+  String * s = new String("HELLO");
   String * s2 = new String("GOODBYE");
   t_true(q->size() == 0);
   q->push(s);
@@ -73,7 +72,6 @@ void test_size_push_pop() {
   q->push(s);
   delete(q->pop());
   t_true(q->size() == 0);
-  delete s;
   delete q;
   OK("5");
 }
@@ -91,8 +89,6 @@ void test_pop_element() {
   t_true(s4->equals(s2));
   delete s;
   delete s2;
-  delete s3;
-  delete s4;
   delete q;
   OK("6");
 }
@@ -132,7 +128,6 @@ void test_isEmpty_false() {
   t_false(q->isEmpty());
   delete(q->pop());
   t_false(q->isEmpty());
-  delete s;
   delete s2;
   delete q;
   OK("9");
