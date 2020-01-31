@@ -133,6 +133,30 @@ void test_isEmpty_false() {
   OK("9");
 }
 
+// tests large volume
+void test_large() {
+  StringQueue* q = new StringQueue();
+  String* s = new String("Hello");
+  String* s2 = new String("Goodbye");
+  for (size_t i = 0; i < 500; ++i) {
+    q->push(s);
+    q->push(s2);
+  }
+  t_true(q->size() == 1000);
+  for (size_t i = 0; i < 1000; ++i) {
+    String* peek = q->peek();
+    String* pop = q->pop();
+    t_true(peek->equals(pop));
+    delete(peek);
+    delete(pop);
+  }
+  t_true(q->size() == 0);
+  delete s;
+  delete s2;
+  delete q;
+  OK("10");
+}
+
 /**
   * Runs the tests on Queue operations.
   * authors: horn.s@husky.neu.edu, armani.a@husky.neu.edu
@@ -147,4 +171,5 @@ int main() {
   test_peek_element();
   test_isEmpty_true();
   test_isEmpty_false();
+  test_large();
 }
