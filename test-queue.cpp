@@ -147,7 +147,6 @@ void test_large() {
     String* peek = q->peek();
     String* pop = q->pop();
     t_true(peek->equals(pop));
-    delete(peek);
     delete(pop);
   }
   t_true(q->size() == 0);
